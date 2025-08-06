@@ -213,7 +213,7 @@ if __name__ == "__main__":
 
     MODEL_NAME = '/workspace/models/chinese-bert-wwm'
     MAX_LENGTH = 512
-    BATCH_SIZE = 8
+    BATCH_SIZE = 32
     LEARNING_RATE = 2e-5
     WEIGHT_DECAY = 0.1
     NUM_EPOCHS = 10
@@ -249,5 +249,5 @@ if __name__ == "__main__":
     total_steps = len(train_dataloader) * NUM_EPOCHS
     scheduler = get_cosine_schedule_with_warmup(optimizer, num_warmup_steps=int(0.05 * total_steps), num_training_steps=total_steps)
 
-    save_path = 'model_path/best_model_with_FGM_macro_f1.pth'
+    save_path = '/workspace/敏感词分类/model_path/best_model_with_FGM_macro_f1.pth'
     train_model_with_FGM(model, train_dataloader, val_dataloader, criterion, optimizer, scheduler, device, num_epochs=NUM_EPOCHS, save_path=save_path)
